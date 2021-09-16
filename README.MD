@@ -2,6 +2,7 @@
 
 To install Docker, you need the 64-bit version of one of these Ubuntu versions:
 
+* Focal 20.04 (LTS)
 * Bionic 18.04 (LTS)
 * Xenial 16.04 (LTS)
 * Trusty 14.04 (LTS)
@@ -15,15 +16,15 @@ The below is used for arm32 Socs:
 
 Use this command to install the latest version of Docker(replace docker with docker.io in ubuntu 14.04):
 
-	apt-get install docker qemu-user-static binfmt-support
+    sudo apt-get install -y docker qemu-user-static binfmt-support docker
 
 Start run Docker deamon:
 
-	service docker start
+    sudo ervice docker start
 
 Build Docker image by dockerfile:
 
-	sudo docker build -t rockchip .
+    sudo docker build -t rockchip .
 
 Now you get a Docker image named "rockchip" which include a debian multiarch cross-compiling enviroment.
 
@@ -31,24 +32,24 @@ Now you get a Docker image named "rockchip" which include a debian multiarch cro
 
 1) Enter docker shell:
 
-		docker run -it -v <package dir>:/home/rk/packages rockchip /bin/bash
+        docker run -it -v <package dir>:/home/rk/packages rockchip /bin/bash
 
 2) Start build:
 
 for arm 32bit Socs：<br>
 
 ```
-		cd /home/rk/packages/<package-name>
-		DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage -rfakeroot -b -d -uc -us -aarmhf
-		ls ../ | grep *.deb
+        cd /home/rk/packages/<package-name>
+        DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage -rfakeroot -b -d -uc -us -aarmhf
+        ls ../ | grep *.deb
 ```
 
 for arm 64bit Socs：<br>
 
 ```
-		cd /home/rk/packages/<package-name>
-		DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage -rfakeroot -b -d -uc -us -aarm64
-		ls ../ | grep *.deb
+        cd /home/rk/packages/<package-name>
+        DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage -rfakeroot -b -d -uc -us -aarm64
+        ls ../ | grep *.deb
 ```
 
 ## Modify image
@@ -56,14 +57,15 @@ for arm 64bit Socs：<br>
 If you want to modify your Docker image, you can open a shell by below command:
 
 ```
-	docker run -it rockchip /bin/bash
+    docker run -it rockchip /bin/bash
 
 ```
 
 After exit from container, you should use below command to save your changes.
 
 ```
-	docker commit  <container_id> rockchip
+    docker commit  <container_id> rockchip
+
 
 ```
 
@@ -71,3 +73,4 @@ After exit from container, you should use below command to save your changes.
 
 To get more informations about dockers, please check below link:
 https://docs.docker.com
+https://www.runoob.com/docker/docker-tutorial.html
