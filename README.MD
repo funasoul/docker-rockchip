@@ -10,17 +10,17 @@ To install Docker, you need the 64-bit version of one of these Ubuntu versions:
 Note: the dockerfile is used for arm64 socs by default.
 
 The below is used for arm32 Socs:
-    cp dockerfile-32 dcokerfile
+    cp dockerfile-32 Dockerfile
 
 ## Install Docker
 
 Use this command to install the latest version of Docker(replace docker with docker.io in ubuntu 14.04):
 
-    sudo apt-get install -y docker qemu-user-static binfmt-support docker
+    sudo apt-get install -y docker qemu-user-static binfmt-support
 
 Start run Docker deamon:
 
-    sudo ervice docker start
+    sudo service docker start
 
 Build Docker image by dockerfile:
 
